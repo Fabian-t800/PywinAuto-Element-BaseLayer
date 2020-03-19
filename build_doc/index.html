@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to Pywinauto Element and BaseLayer’s documentation! &#8212; Pywinauto Element and BaseLayer 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-pywinauto-element-and-baselayer-s-documentation">
+<h1>Welcome to Pywinauto Element and BaseLayer’s documentation!<a class="headerlink" href="#welcome-to-pywinauto-element-and-baselayer-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="connection-to-an-application">
+<h1>Connection to an application<a class="headerlink" href="#connection-to-an-application" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="connect_to_app">
+<code class="sig-name descname">connect_to_app</code><span class="sig-paren">(</span><em class="sig-param">app_name</em>, <em class="sig-param">proc_name</em>, <em class="sig-param">backend='uia'</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_to_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Establishes a connection to the target application</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> – name of the application you wish to run. This can either be the complete path to the application (ex: drive_nameusersusernameapp_name.exe or just the name of the application, if the app has been added to the environment variables). For reference, in the example the app_name will be “calc.exe”, which launches the windows 10 default calculator.</p></li>
+<li><p><strong>proc_name</strong> – name of the process that is being launched. As an example: the process name of the windows10 default calculator app is simply “Calculator”. Note: You can find this, by checking under Task ManagerDetails, and searching for the application that has been spawned.</p></li>
+<li><p><strong>backend</strong> – the backend parameter pertains to pywinauto and is used to determine which type of accessibility technology will be used for the tested application. By default it is set to uia. The documentation for this can be found by following this link. It is important to note that the connect_to_app() function is a singleton, as it’s only ever needed to test a single instance of the connection at a time.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dialog window aka top_window. The pywinauto “root” element used to interact with the application</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="element">
+<h1>Element<a class="headerlink" href="#element" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">application_path</em>, <em class="sig-param">process_name</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of the method needs two parameters so it will be able to call the connect_to_app() singleton function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>application_path</strong> – name of the application you wish to run. This can either be the complete path to the application</p></li>
+<li><p><strong>process_name</strong> – name of the process that is being launched.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ret_window_handle">
+<code class="sig-name descname">ret_window_handle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ret_window_handle" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Method that returns the window handle (topmost window)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ret_element">
+<code class="sig-name descname">ret_element</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">locator_strategy=None</em>, <em class="sig-param">locator=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ret_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>A method used to return the sought after element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locator_strategy</strong> – the locator strategy (auto_id, title, etc) by which an element can be identified. Drawing a comparison to web automation, this would be the equivalent of id, class, partial link text etc. Note: Fastest locator strategies are generally the automation_id (auto_id) strategies</p></li>
+<li><p><strong>locator</strong> – value of the locator strategy.</p></li>
+<li><p><strong>kwargs</strong> – Not yet implemented</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Pywinauto object that is used to interact with the desired element</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="click_element">
+<code class="sig-name descname">click_element</code><span class="sig-paren">(</span><em class="sig-param">locator_strategy</em>, <em class="sig-param">locator</em><span class="sig-paren">)</span><a class="headerlink" href="#click_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clicks the element with the specified locators</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locator_strategy</strong> – the locator strategy (auto_id, title, etc) by which an element can be identified. Drawing a comparison to web automation, this would be the equivalent of id, class, partial link text etc. Note: Fastest locator strategies are generally the automation_id (auto_id) strategies.</p></li>
+<li><p><strong>locator</strong> – value of the locator strategy.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Does not return any value, instead it clicks the element.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="get_element_text">
+<code class="sig-name descname">get_element_text</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">locator_strategy</em>, <em class="sig-param">locator</em><span class="sig-paren">)</span><a class="headerlink" href="#get_element_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the text displayed in the window</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locator_strategy</strong> – the locator strategy (auto_id, title, etc) by which an element can be identified. Drawing a comparison to web automation, this would be the equivalent of id, class, partial link text etc. Note: Fastest locator strategies are generally the automation_id (auto_id) strategies.</p></li>
+<li><p><strong>locator</strong> – value of the locator strategy.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a string containing the element’s text. Of note is the fact that the pywinauto method used is .window_text() that returns the text visible to the user from the UI.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="baselayer">
+<h1>BaseLayer<a class="headerlink" href="#baselayer" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Pywinauto Element and BaseLayer</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Fabian Tolgyi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
