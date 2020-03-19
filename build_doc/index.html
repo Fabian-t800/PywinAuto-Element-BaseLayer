@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Welcome to Pywinauto Element and BaseLayer’s documentation! &#8212; Pywinauto Element and BaseLayer 0.1 documentation</title>
+    <title>Welcome to Pywinauto Element and BaseLayer’s documentation! &#8212; Pywinauto Element Class and BaseLayer 0.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -60,7 +60,7 @@
 <h1>Element<a class="headerlink" href="#element" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">application_path</em>, <em class="sig-param">process_name</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">application_path</em>, <em class="sig-param">process_name</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>The constructor of the method needs two parameters so it will be able to call the connect_to_app() singleton function</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -102,7 +102,7 @@
 
 <dl class="method">
 <dt id="click_element">
-<code class="sig-name descname">click_element</code><span class="sig-paren">(</span><em class="sig-param">locator_strategy</em>, <em class="sig-param">locator</em><span class="sig-paren">)</span><a class="headerlink" href="#click_element" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">click_element</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">locator_strategy</em>, <em class="sig-param">locator</em><span class="sig-paren">)</span><a class="headerlink" href="#click_element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clicks the element with the specified locators</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -131,12 +131,158 @@
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>a string containing the element’s text. Of note is the fact that the pywinauto method used is .window_text() that returns the text visible to the user from the UI.</p>
 </dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+<p>Note: Fastest locator strategies are generally the automation_id (auto_id) strategies.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="send_kb_keys">
+<code class="sig-name descname">send_kb_keys</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">locator_strategy=None</em>, <em class="sig-param">locator=None</em>, <em class="sig-param">keyboard_input=None</em><span class="sig-paren">)</span><a class="headerlink" href="#send_kb_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends keys to the topmost window by default. If locator strategies are used then it will send keyboard keys to the desired element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locator_strategy</strong> – the locator strategy (auto_id, title, etc) by which an element can be identified. Drawing a comparison to web automation, this would be the equivalent of id, class, partial link text etc. Note: Fastest locator strategies are generally the automation_id (auto_id) strategies.</p></li>
+<li><p><strong>locator</strong> – value of the locator strategy.</p></li>
+<li><p><strong>keyboard_input</strong> – contains the string of characters to be sent to the application. Note: All arguments are initially set to None, since this way, inputs can be sent directly to the application’s topmost window.</p></li>
+</ul>
+</dd>
 </dl>
 </dd></dl>
 
+<dl class="method">
+<dt id="toggle_element">
+<code class="sig-name descname">toggle_element</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">locator_strategy</em>, <em class="sig-param">locator</em><span class="sig-paren">)</span><a class="headerlink" href="#toggle_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get toggle state works for checkboxes as well as for toggles!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>toggle state of the element in question</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="maximize_window">
+<code class="sig-name descname">maximize_window</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#maximize_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximizes the window</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="close_app">
+<code class="sig-name descname">close_app</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#close_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the application</p>
+</dd></dl>
+
 </div>
-<div class="section" id="baselayer">
-<h1>BaseLayer<a class="headerlink" href="#baselayer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-pywin_lib">
+<span id="baselayer"></span><h1>BaseLayer<a class="headerlink" href="#module-pywin_lib" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pywin_lib.BaseLayer">
+<em class="property">class </em><code class="sig-prename descclassname">pywin_lib.</code><code class="sig-name descname">BaseLayer</code><span class="sig-paren">(</span><em class="sig-param">app_name</em>, <em class="sig-param">proc_name</em><span class="sig-paren">)</span><a class="headerlink" href="#pywin_lib.BaseLayer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="pywin_lib.BaseLayer.click">
+<code class="sig-name descname">click</code><span class="sig-paren">(</span><em class="sig-param">locator_strategy</em>, <em class="sig-param">locator</em>, <em class="sig-param">found_index=0</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywin_lib.BaseLayer.click" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clicks the element with the desired element. Initially uses the .click() method, but if that doesn’t succeed, then uses .click_input() method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locator_strategy</strong> – the locator strategy (auto_id, title, etc) by which an element can be identified. Drawing a comparison to web automation, this would be the equivalent of id, class, partial link text etc. Note: Fastest locator strategies are generally the automation_id (auto_id) strategies.</p></li>
+<li><p><strong>locator</strong> – value of the locator strategy.</p></li>
+<li><p><strong>kwargs</strong> – Not yet implemented</p></li>
+<li><p><strong>found_index</strong> – By default it’s set to 0. If there are more elements with the same locators, then found_index can be used to find the nth element.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywin_lib.BaseLayer.close_application">
+<code class="sig-name descname">close_application</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywin_lib.BaseLayer.close_application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the built in pywinauto .close() method to close the application.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywin_lib.BaseLayer.element">
+<code class="sig-name descname">element</code><span class="sig-paren">(</span><em class="sig-param">locator_strategy</em>, <em class="sig-param">locator</em>, <em class="sig-param">found_index=0</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywin_lib.BaseLayer.element" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locator_strategy</strong> – the locator strategy (auto_id, title, etc) by which an element can be identified. Drawing a comparison to web automation, this would be the equivalent of id, class, partial link text etc. Note: Fastest locator strategies are generally the automation_id (auto_id) strategies.</p></li>
+<li><p><strong>locator</strong> – value of the locator strategy.</p></li>
+<li><p><strong>kwargs</strong> – Not yet implemented</p></li>
+<li><p><strong>found_index</strong> – By default it’s set to 0. If there are more elements with the same locators, then found_index can be used to find the nth element.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Pywinauto object that is used to interact with the desired element</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywin_lib.BaseLayer.get_toggle_state">
+<code class="sig-name descname">get_toggle_state</code><span class="sig-paren">(</span><em class="sig-param">locator_strategy</em>, <em class="sig-param">locator</em><span class="sig-paren">)</span><a class="headerlink" href="#pywin_lib.BaseLayer.get_toggle_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get toggle state works for checkboxes as well as for toggles!
+:return: toggle state of the element in question</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywin_lib.BaseLayer.keyboard_typing">
+<code class="sig-name descname">keyboard_typing</code><span class="sig-paren">(</span><em class="sig-param">input_string</em>, <em class="sig-param">locator_strategy=None</em>, <em class="sig-param">locator=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pywin_lib.BaseLayer.keyboard_typing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locator_strategy</strong> – the locator strategy (auto_id, title, etc) by which an element can be identified. Drawing a comparison to web automation, this would be the equivalent of id, class, partial link text etc. Note: Fastest locator strategies are generally the automation_id (auto_id) strategies.</p></li>
+<li><p><strong>locator</strong> – value of the locator strategy.</p></li>
+<li><p><strong>keyboard_input</strong> – contains the string of characters to be sent to the application. Note: All arguments are initially set to None, since this way, inputs can be sent directly to the application’s topmost window.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywin_lib.BaseLayer.maximize_window">
+<code class="sig-name descname">maximize_window</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywin_lib.BaseLayer.maximize_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximizes the application’s window</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywin_lib.BaseLayer.read_window_text">
+<code class="sig-name descname">read_window_text</code><span class="sig-paren">(</span><em class="sig-param">locator_strategy</em>, <em class="sig-param">locator</em><span class="sig-paren">)</span><a class="headerlink" href="#pywin_lib.BaseLayer.read_window_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the text of the desired element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locator_strategy</strong> – the locator strategy (auto_id, title, etc) by which an element can be identified. Drawing a comparison to web automation, this would be the equivalent of id, class, partial link text etc. Note: Fastest locator strategies are generally the automation_id (auto_id) strategies.</p></li>
+<li><p><strong>locator</strong> – value of the locator strategy.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>String containing the text</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywin_lib.BaseLayer.scroll">
+<code class="sig-name descname">scroll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywin_lib.BaseLayer.scroll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation not yet complete. Ignore.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywin_lib.BaseLayer.toggle_element">
+<code class="sig-name descname">toggle_element</code><span class="sig-paren">(</span><em class="sig-param">locator_strategy</em>, <em class="sig-param">locator</em><span class="sig-paren">)</span><a class="headerlink" href="#pywin_lib.BaseLayer.toggle_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>toggle_element works for checking checkboxes as well as for toggles</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -154,7 +300,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">Pywinauto Element and BaseLayer</a></h1>
+<h1 class="logo"><a href="#">Pywinauto Element Class and BaseLayer</a></h1>
 
 
 
